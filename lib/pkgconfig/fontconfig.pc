@@ -1,0 +1,12 @@
+QNX_TARGET=/home/jeremy/bbndk-2.0.0/target/qnx6
+prefix=${QNX_TARGET}
+exec_prefix=${prefix}/armle-v7
+libdir=${exec_prefix}/usr/lib
+includedir=${prefix}/usr/include/fontconfig
+
+Name: FontConfig
+Description: The fontconfig library
+Version: 2.8.0
+Cflags: -I${includedir}
+Libs: -L${libdir} -lfontconfig
+

@@ -1,0 +1,12 @@
+QNX_TARGET=/home/jeremy/bbndk-2.0.0/target/qnx6
+prefix=${QNX_TARGET}
+exec_prefix=${prefix}/armle-v7
+libdir=${exec_prefix}/usr/lib
+includedir=${prefix}/usr/include
+
+Name: libpng
+Description: Loads and saves PNG files
+Version: 1.4.8
+Libs: -L${libdir} -lpng
+Libs.private: -lz -lm
+Cflags: -I${includedir}

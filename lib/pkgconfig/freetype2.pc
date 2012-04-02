@@ -1,0 +1,12 @@
+QNX_TARGET=/home/jeremy/bbndk-2.0.0/target/qnx6
+prefix=${QNX_TARGET}
+exec_prefix=${prefix}/armle-v7
+libdir=${exec_prefix}/usr/lib
+includedir=${prefix}/usr/include/freetype2
+
+Name: FreeType
+Description: The FreeType library
+Version: 14.0.8
+Cflags: -I${includedir}
+Libs: -L${libdir} -lfreetype
+

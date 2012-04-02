@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ $# -lt 1 ]; then
+  echo "Usage: $0 [--include|--libs]"
+  exit -1
+fi
+
+if [ "$1" == "--include" ]; then
+  echo "-I${PWD}/../install/include"
+elif [ "$1" == "--libs" ]; then
+  echo "-L${PWD}/../install/lib -lmysqlclient -lz -lm"
+fi

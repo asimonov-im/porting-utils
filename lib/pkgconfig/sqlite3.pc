@@ -1,0 +1,11 @@
+QNX_TARGET=/home/jeremy/bbndk-2.0.0/target/qnx6
+prefix=${QNX_TARGET}
+exec_prefix=${prefix}/armle-v7
+libdir=${exec_prefix}/usr/lib
+includedir=${prefix}/usr/include
+
+Name: SQLite
+Description: SQL database engine
+Version: 3.7.9
+Libs: -L${libdir} -lsqlite3
+Cflags: -I${includedir}

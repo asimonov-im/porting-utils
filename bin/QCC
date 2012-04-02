@@ -1,0 +1,2 @@
+#!/bin/bash
+${QNX_HOST}/usr/bin/QCC -V4.4.2,gcc_ntoarmv7le_gpp $@
