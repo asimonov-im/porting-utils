@@ -1,0 +1,11 @@
+QNX_TARGET=/home/jeremy/bbndk-2.0.0/target/qnx6
+prefix=${QNX_TARGET}
+exec_prefix=${prefix}/armle-v7
+libdir=${exec_prefix}/usr/lib
+includedir=${prefix}/usr/include
+
+Name: OpenSSL
+Description: Secure Sockets Layer and cryptography libraries and tools
+Version: 0.9.8j
+Libs: -L${libdir} -lssl -lcrypto -lz
+Cflags: -I${includedir}
