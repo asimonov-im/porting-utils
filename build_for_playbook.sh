@@ -32,5 +32,7 @@ for file in `ls lib/pkgconfig/*.pc`; do
   sed -f /tmp/replace.sed.$$ $file > ${PREFIX}/$file
 done
 
+cp -v -a include/* ${PREFIX}/include
+
 rm -f /tmp/replace.sed.$$
 echo "Build successful."
