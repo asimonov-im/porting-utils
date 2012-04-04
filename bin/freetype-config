@@ -1,0 +1,45 @@
+#!/bin/sh
+
+prefix=/home/asimonov/Cyanman/SDL/../install
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+
+export PKG_CONFIG_PATH=${libdir}/pkgconfig
+export PKG_CONFIG_LIBDIR=${libdir}/pkgconfig
+
+usage="Usage: freetype-config [--prefix] [--exec-prefix] [--version] [--cflags] [--libs]"
+
+if test $# -eq 0; then
+      echo "${usage}" 1>&2
+      exit 1
+fi
+
+while test $# -gt 0; do
+  case "$1" in
+  -*=*) optarg=`echo "$1" | LC_ALL="C" sed 's/[-_a-zA-Z0-9]*=//'` ;;
+  *) optarg= ;;
+  esac
+
+  case $1 in
+    --prefix)
+      echo $prefix
+      ;;
+    --exec-prefix)
+      echo $exec_prefix
+      ;;
+    --version)
+      pkg-config --modversion freetype2
+      ;;
+    --cflags)
+      pkg-config --cflags freetype2
+      ;;
+    --libs)
+      pkg-config --libs freetype2 
+      ;;
+    *)
+      echo "${usage}" 1>&2
+      exit 1
+      ;;
+  esac
+  shift
+done

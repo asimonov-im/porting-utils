@@ -27,9 +27,10 @@ PREFIX=$(pwd)/../install
 echo "s#QNX_TARGET=.*#QNX_TARGET=${QNX_TARGET}#" > /tmp/replace.sed.$$
 echo "Using QNX_TARGET: ${QNX_TARGET}"
 
+mkdir -p "${PREFIX}"
 for file in `ls lib/pkgconfig/*.pc`; do
   echo "Copying $file to ${PREFIX}/$file"
-  sed -f /tmp/replace.sed.$$ $file > ${PREFIX}/$file
+  sed -f /tmp/replace.sed.$$ $file > "${PREFIX}/$file"
 done
 
 cp -v -a include/* ${PREFIX}/include
