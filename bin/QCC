@@ -18,4 +18,6 @@ echo ${QNX_HOST}/usr/bin/QCC -V4.4.2,gcc_ntoarmv7le_gpp $ARGS > /tmp/qcc.$$
 #echo /tmp/cmddump $ARGS > /tmp/qcc.$$
 chmod +x /tmp/qcc.$$
 /tmp/qcc.$$
+RET=$?
 rm -f /tmp/qcc.$$
+exit $RET

@@ -1,2 +1,26 @@
 #!/bin/bash
-${QNX_HOST}/usr/bin/qcc -V4.4.2,gcc_ntoarmv7le_gpp $@
+ARGS=
+while [ $# -gt 0 ]
+do
+  case "$1" in
+    #-MF) ARGS="$ARGS -Wc,\"$1 $2\""; shift;;
+    -MF) ARGS="$ARGS -Wc,-MD,$2"; shift;;
+    #-MM) ARGS="$ARGS -Wc,-MM";;
+    #-MD) ARGS="$ARGS -Wc,-MD";;
+    -D*\"*\") ARGS="$ARGS `echo $1 | sed -e 's/"/\\\\"/g'`";;
+    -std*) ARGS="$ARGS -Wc,$1";;
+    -rdynamic*) ARGS="$ARGS -Wl,-export-dynamic";;
+    -MD) ;;
+    -V*) ;;
+    *) ARGS="$ARGS $1";;
+  esac
+  shift
+done
+echo "#!/bin/bash" > /tmp/qcc.$$
+echo ${QNX_HOST}/usr/bin/qcc -V4.4.2,gcc_ntoarmv7le_gpp $ARGS > /tmp/qcc.$$
+#echo /tmp/cmddump $ARGS > /tmp/qcc.$$
+chmod +x /tmp/qcc.$$
+/tmp/qcc.$$
+RET=$?
+rm -f /tmp/qcc.$$
+exit $RET
