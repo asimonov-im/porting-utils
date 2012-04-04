@@ -1,0 +1,11 @@
+QNX_TARGET=/home/asimonov/bbndk-2.0.0-beta3/target/qnx6
+prefix=${QNX_TARGET}
+exec_prefix=${prefix}/armle-v7
+libdir=${exec_prefix}/usr/lib
+includedir=${prefix}/usr/include/libxml
+
+Name: libxml2
+Description: Does stuff with XML
+Version: 2.7.8
+Libs: -L${libdir} -lxml2
+Cflags: -I${includedir}
