@@ -7,6 +7,7 @@ do
     -MF) ARGS="$ARGS -Wc,-MD,$2"; shift;;
     #-MM) ARGS="$ARGS -Wc,-MM";;
     #-MD) ARGS="$ARGS -Wc,-MD";;
+    -rdynamic*) ARGS="$ARGS -Wl,-export-dynamic";;
     -D*\"*\") ARGS="$ARGS `echo $1 | sed -e 's/"/\\\\"/g'`";;
     -MD) ;;
     -V*) ;;

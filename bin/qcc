@@ -8,6 +8,7 @@ do
     -MT) ARGS="$ARGS -Wc,-MMD,$2"; shift;;
     #-MM) ARGS="$ARGS -Wc,-MM";;
     #-MD) ARGS="$ARGS -Wc,-MD";;
+    -DDEBUG_TRAP*) ARGS="$ARGS -DDEBUG_TRAP=__asm__\\(\"int \$3\"\\)";;
     -D*\"*\") ARGS="$ARGS `echo $1 | sed -e 's/"/\\\\"/g'`";;
     -std*) ARGS="$ARGS -Wc,$1";;
     -rdynamic*) ARGS="$ARGS -Wl,-export-dynamic";;
