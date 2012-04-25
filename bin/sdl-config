@@ -1,11 +1,27 @@
 #!/bin/bash
 if [ $# -lt 1 ]; then
-  echo "Usage: $0 [--cflags|--libs]"
+  echo "Usage: $0 [--cflags|--libs|--version]"
   exit -1
 fi
 
+PREFIX=../install
+if [ ! -d "$PREFIX" ]; then
+    PREFIX=../$PREFIX
+fi
+
+if [ ! -d "$PREFIX" ]; then
+    PREFIX=../$PREFIX
+fi
+
+if [ ! -d "$PREFIX" ]; then
+    echo "Could not find PREFIX"
+    exit -1
+fi
+
 if [ "$1" == "--cflags" ]; then
-  echo "-I${PWD}/../install/include -D__PLAYBOOK__"
+  echo "-I${PREFIX}/include -D__PLAYBOOK__"
 elif [ "$1" == "--libs" ]; then
-  echo "-L${PWD}/../install/lib -lSDL -lTouchControlOverlay -lbps -lxml2 -lpng -lscreen -lEGL -lGLESv2"
+  echo "-L${PREFIX}/lib -lSDL -lTouchControlOverlay -lbps -lxml2 -lpng -lscreen -lEGL -lGLESv2"
+elif [ "$1" == "--version" ]; then
+  echo "1.2.14"
 fi
